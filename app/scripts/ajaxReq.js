@@ -17,13 +17,7 @@ var web3 = new Web3();
 web3.setProvider(new Web3.providers.HttpProvider(ajaxReq.SERVERURL));
 
 ajaxReq.getBalance = function(addr, callback) {
-    console.log("Get balance for addr: ", addr);
     web3.eth.getBalance(addr, callback);
-    console.log("This should fire before promise assuming it exists");
-	/*this.post({
-		balance: addr,
-        isClassic: false
-	}, callback);*/
 }
 ajaxReq.getClassicBalance = function(addr, callback) {
 	this.post({
