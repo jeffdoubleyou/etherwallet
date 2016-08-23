@@ -39,7 +39,7 @@
     <h4 class="col-xs-12"> Step 2: Generate Transaction (Offline Computer)</h4>
     <div class="form-group col-xs-10">
       <label> To Address: </label>
-      <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
+      <input class="form-control"  type="text" placeholder="0x673bc2069425a0331392215335bff0c5c2550a74" ng-model="tx.to" ng-change="validateAddress(tx.to,'validateToAddressStatus')"/>
       <div ng-bind-html="validateToAddressStatus"></div>
     </div>
     <div class="col-xs-2 address-identicon-container">
@@ -50,7 +50,7 @@
       <label>II. Value / Amount to Send</label>
       <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
       <div class="radio">
-        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>Ether</label>
+        <label><input type="radio" name="currencyRadioOffline" checked value="ether" ng-model="tx.unit"/>KR</label>
         <label><input type="radio" name="currencyRadioOffline" value="finney" ng-model="tx.unit" />Finney</label>
         <label><input type="radio" name="currencyRadioOffline" value="szabo" ng-model="tx.unit"/>Szabo</label>
       </div>

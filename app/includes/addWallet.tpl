@@ -69,7 +69,7 @@
       <!-- Add an Account to Watch -->
       <div ng-show="walletType=='watchonlyaccount'">
         <h4> Add an Account to Watch: </h4>
-        <p class="text-danger">You can add any account to "watch" on the wallets tab without uploading a private key. This does <strong> not </strong> mean you have access to this wallet, nor can you transfer Ether from it. </p>
+        <p class="text-danger">You can add any account to "watch" on the wallets tab without uploading a private key. This does <strong> not </strong> mean you have access to this wallet, nor can you transfer Krypton from it. </p>
         <div class="form-group">
           <label> Create a Nickname: </label>
           <input class="form-control" type="text" placeholder="My New Wallet" ng-model="addAccount.nickName" ng-change="watchOnlyChange()"/>
@@ -111,7 +111,7 @@
           <br /> <strong style="margin-left: 1em" class="mono word-wrap">{{wallet.getChecksumAddressString()}}</strong></p>
           <p> Account Balance:
           <br />
-          <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} Ether </strong>
+          <strong class="text-success" style="margin-left: 1em"> {{etherBalance}} KR </strong>
           <br />
           <strong class="text-success" style="margin-left: 1em"> {{usdBalance}} USD </strong>
           <br />

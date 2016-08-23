@@ -2,7 +2,7 @@
   <article class="col-md-4 col-sm-6">
     <h4> How would you like to access your wallet? </h4>
     <div class="radio">
-      <label><input type="radio" ng-model="walletType" value="fileupload"/>Upload Your Wallet File <small>(Pre-Sale / JSON / Keystore / MyEtherWallet)</small></label>
+      <label><input type="radio" ng-model="walletType" value="fileupload"/>Upload Your Wallet File <small>(Pre-Sale / JSON / Keystore / MyKryptonWallet)</small></label>
     </div>
     <div class="radio">
       <label>

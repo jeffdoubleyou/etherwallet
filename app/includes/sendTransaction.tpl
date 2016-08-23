@@ -1,6 +1,6 @@
 <!-- send transaction -->
 <div class="tab-pane active" ng-if="globalService.currentTab==globalService.tabs.sendTransaction.id">
-  <h2> Send Ether </h2>
+  <h2> Send Krypton </h2>
   <p> If you want to send Tokens, please use the "Send Token" page instead. </p>
   <div>
       @@if (site === 'cx' ) {
@@ -21,9 +21,7 @@
 
         <p> Account Balance:
           <br />
-          <strong style="margin-left: 1em"> {{etherBalance}} ETH </strong>
-          <br />
-          <strong style="margin-left: 1em"> {{etcBalance}} ETC </strong>
+          <strong style="margin-left: 1em"> {{etherBalance}} KR </strong>
         </p>
         <p> Equivalent Values:
           <br />
@@ -38,21 +36,18 @@
       </div>
       <br />
       <div class="well">
-        <p> MyEtherWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. We are just two people trying to change the world. Help us?</p>
+        <p> MyKryptonWallet is a free, open-source service dedicated to your privacy and security. The more donations we receive, the more time we spend creating new features, listening to your feedback, and giving you what you want. Help us?</p>
         <a class="btn btn-primary btn-block" ng-click="onDonateClick()">DONATE</a>
         <div class="text-success text-center marg-v-sm"><strong ng-show="tx.donate"> THANK YOU!!! </strong></div>
       </div>
     </div>
     <div class="col-sm-8">
-      <a data-toggle="modal" data-target="#txInfoModal" ng-click="txInfoModal.open()"><div class="alert alert-danger small">
-        If you are using the "Only ETH" or "Only ETC" Functions you are sending via a contract. Some services have issues accepting these transactions. Read more.
-      </div></a>
 
       <h4>Send Transaction</h4>
 
       <div class="form-group col-xs-10">
         <label> To Address: </label>
-        <input class="form-control"  type="text" placeholder="0x7cB57B5A97eAbe94205C07890BE4c1aD31E486A8" ng-model="tx.to" ng-change="validateAddress()"/>
+        <input class="form-control"  type="text" placeholder="0x673bc2069425a0331392215335bff0c5c2550a74" ng-model="tx.to" ng-change="validateAddress()"/>
         <div ng-bind-html="validateAddressStatus"></div>
       </div>
       <div class="col-xs-2 address-identicon-container">
@@ -66,9 +61,7 @@
         <a class="pull-right" ng-click="transferAllBalance()" ng-show="tx.sendMode==0">Transfer total available balance</a>
         <input class="form-control" type="text" placeholder="Amount" ng-model="tx.value"/>
         <div class="radio">
-          <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>ETH (Standard Transaction)</label><br />
-          <label><input type="radio" name="currencyRadio" value="1" ng-model="tx.sendMode"/>Only ETH </label><br />
-          <label><input type="radio" name="currencyRadio" value="2" ng-model="tx.sendMode"/>Only ETC </label>
+          <label><input type="radio" name="currencyRadio" value="0" ng-model="tx.sendMode"/>KR (Standard Transaction)</label><br />
         </div>
         <!-- advanced option panel -->
         <div ng-show="tx.sendMode==0">
@@ -103,7 +96,7 @@
       </div>
       <div class="form-group col-xs-12" ng-bind-html="sendTxStatus"></div>
       <div class="form-group col-xs-12">
-        <p><small> A standard transaction using 21000 gas will cost 0.000441 ETH. We use a slightly-above-minimum gas price of 0.000000021 ETH to ensure it gets mined quickly. We do not take a transaction fee.</small></p>
+        <p><small> A standard transaction using 21000 gas will cost 0.000441 KR. We use a slightly-above-minimum gas price of 0.000000021 KR to ensure it gets mined quickly. We do not take a transaction fee.</small></p>
       </div>
 
       <!-- Modal -->
@@ -118,7 +111,7 @@
               <h4>
                 You are about to send
                 <strong id="confirmAmount" class="text-primary"> {{tx.value}} </strong>
-                <strong id="confirmCurrancy" class="text-primary"> {{tx.sendMode == 2 ? "ETC" : "ETH"}} </strong>
+                <strong id="confirmCurrancy" class="text-primary"> KR </strong>
                 to address
                 <strong id="confirmAddress" class="text-primary"> {{tx.to}} </strong>
               </h4>
@@ -131,34 +124,6 @@
           </div>
         </div>
       </div>
-      <!--/modal-->
-
-      <!-- Info Modal -->
-      <div class="modal fade" id="txInfoModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"> <strong class="text-danger">"Only ETH" and "Only ETC" Transactions</strong></h4>
-            </div>
-            <div class="modal-body">
-              <p>A note about the different transactions and different services:</p>
-              <ul>
-                <li><strong> ETH (Standard Transaction):</strong> This generates a default transaction directly from one address to another. It has a default gas of 21000. It is likely that any ETH sent via this method will be replayed onto the ETC chain.</li>
-                <li><strong> Only ETH:</strong> This sends via <a href="https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/" target="_blank"> Timon Rapp's replay protection contract (as recommended by VB)</a> so that you only send on the <strong>ETH</strong> chain.</li>
-                <li><strong> Only ETC:</strong> This sends via <a href="https://blog.ethereum.org/2016/07/26/onward_from_the_hard_fork/" target="_blank"> Timon Rapp's replay protection contract (as recommended by VB)</a> so that you only send on the <strong>ETC</strong> chain. </li>
-                <li><strong>Coinbase & ShapeShift:</strong> Only send via Standard Transaction. If you send via the "Only" contracts, you will need to reach out to their support staff to manually add your balance or refund you. <a href="https://split.shapeshift.io/" target="_blank"> You can try Shapeshift's "split" tool as well. </li>
-                <li><strong> Kraken & Poloniex: </strong> No known issues. Use whatever.</li>
-              </ul>
-            </div>
-            <div class="modal-footer text-center">
-              <a href="mailto:myetherwallet@gmail.com" type="button" class="btn btn-danger">Oh gosh, I'm more confused. Help me.</a>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Sweet, I get it now.</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--/modal-->
 
     </div>
   </section>

@@ -19,7 +19,7 @@
     <hr />
     <div class="row">
       <h2 class="col-xs-12">Success! Your wallets have been generated.</h2>
-      <p class="col-xs-12 text-danger"> You need to back up your private keys externally and verify you can access the wallets. Do this BEFORE you send any Ether to a new wallet. MyEtherWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
+      <p class="col-xs-12 text-danger"> You need to back up your private keys externally and verify you can access the wallets. Do this BEFORE you send any Krypton to a new wallet. MyKryptonWallet.com does not receive or store any information so we <strong>cannot</strong> recover your wallet. Read the <a id="help" class="ptabs" showId="paneHelp">help page</a> for instructions.</p>
       <article class="col-md-9">
         <table id="bulkgentable" class="table">
           <thead>
