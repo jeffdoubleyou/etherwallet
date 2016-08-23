@@ -20,7 +20,7 @@ var fileinclude = require('gulp-file-include');
 // less vars
 var lessWatchFolder = './app/styles/less/**/*.less';
 var lessFile = './app/styles/less/etherwallet-master.less';
-var lessOutputFolder = './dist/css';
+var lessOutputFolder = './docs/css';
 var cxLessOutputFolder = './chrome-extension/css';
 var lessOutputFile = 'etherwallet-master.css';
 var lessOutputFileMin = 'etherwallet-master.min.css';
@@ -38,12 +38,12 @@ var staticjsOutputFile = 'etherwallet-static.min.js';
 
 //images
 var imagesFolder = "./app/images/**/*";
-var imagesOutputFolder = "./dist/images";
+var imagesOutputFolder = "./docs/images";
 var cxImagesOutputFolder = "./chrome-extension/images";
 
 //fonts
 var fontsFolder = "./app/fonts/*.*";
-var fontsOutputFolder = "./dist/fonts";
+var fontsOutputFolder = "./docs/fonts";
 var cxFontsOutputFolder = "./chrome-extension/fonts";
 
 gulp.task('less', function (cb) {
@@ -69,7 +69,7 @@ gulp.task('less', function (cb) {
 });
 
 gulp.task('browserify', shell.task([
-  'browserify '+mainjs+' -o dist/js/etherwallet-master.js'
+  'browserify '+mainjs+' -o docs/js/etherwallet-master.js'
 ]));
 
 gulp.task('cxBrowserify', shell.task([
@@ -82,7 +82,7 @@ gulp.task('staticJS', function () {
       .pipe(concat(staticjsOutputFile))
       .pipe(uglify())
       // mew static
-      .pipe(gulp.dest('./dist/js/'))
+      .pipe(gulp.dest('./docs/js/'))
       .pipe(notify('MEW StaticJS Complete'))
       // mew staticxc
       .pipe(gulp.dest('./chrome-extension/js/'))
@@ -91,9 +91,9 @@ gulp.task('staticJS', function () {
 
 gulp.task('minJS',['browserify'],function () {
   return gulp
-    .src('./dist/js/etherwallet-master.js')
+    .src('./docs/js/etherwallet-master.js')
       .pipe(concat('etherwallet-master-min.js'))
-      .pipe(gulp.dest('./dist/js/'))
+      .pipe(gulp.dest('./docs/js/'))
       .pipe(notify('MEW MinJS'));
 });
 
@@ -127,7 +127,7 @@ gulp.task('buildHTML', function () {
         prefix: '@@',
         basepath: '@file'
       }))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./docs/'))
     .pipe(notify({message:'MEW HTML Pages Complete', onLast:true}))
     .pipe(gulp.dest('./chrome-extension/'))
     .pipe(notify({message:'CX HTML Pages Complete', onLast:true}));
