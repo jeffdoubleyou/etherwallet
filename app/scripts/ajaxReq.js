@@ -11,11 +11,17 @@ ajaxReq.config = {
 		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 	}
 };
+
+var Web3 = require('web3');
+var web3 = new Web3();
+web3.setProvider(new Web3.providers.HttpProvider(ajaxReq.SERVERURL));
+
 ajaxReq.getBalance = function(addr, callback) {
-	this.post({
+    web3.eth.getBalance(addr, callback);
+	/*this.post({
 		balance: addr,
         isClassic: false
-	}, callback);
+	}, callback);*/
 }
 ajaxReq.getClassicBalance = function(addr, callback) {
 	this.post({
