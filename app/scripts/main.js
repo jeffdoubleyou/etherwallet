@@ -18,7 +18,6 @@ ethUtil.uuid = require('uuid');
 window.ethUtil = ethUtil;
 var Wallet = require('./myetherwallet');
 window.Wallet = Wallet;
-window.Token = Token;
 var globalFuncs = require('./globalFuncs');
 window.globalFuncs = globalFuncs;
 var uiFuncs = require('./uiFuncs');
