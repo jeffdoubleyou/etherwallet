@@ -21,15 +21,15 @@ var myWalletsCtrl = function($scope, $sce) {
 		cxFuncs.getWalletsArr(function(wlts) {
 			$scope.allWallets = wlts;
 			$scope.updateBalance('allWallets');
-			$scope.setTokens('allWallets');
+			//$scope.setTokens('allWallets');
 		});
 		cxFuncs.getWatchOnlyArr(function(wlts) {
 			$scope.allWatchOnly = wlts;
 			$scope.updateBalance('allWatchOnly');
-            $scope.setTokens('allWatchOnly');
+            //$scope.setTokens('allWatchOnly');
 		});
 	};
-	$scope.setTokens = function(varWal) {
+	/*$scope.setTokens = function(varWal) {
 		for(var j=0;j<$scope[varWal].length; j++){
         $scope.tokens = Token.popTokens;
         $scope[varWal][j].tokens = [];
@@ -41,7 +41,7 @@ var myWalletsCtrl = function($scope, $sce) {
 					$scope[varWal][j].tokens.push(new Token(storedTokens[i].contractAddress, $scope[varWal][j].addr, globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
 				}
 		}
-	}
+	}*/
 	$scope.updateBalance = function(varWal) {
 		for (var i = 0; i < $scope[varWal].length; i++) {
 			$scope.setBalance($scope[varWal][i].addr, i, varWal);

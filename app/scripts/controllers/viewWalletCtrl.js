@@ -29,9 +29,9 @@ var viewWalletCtrl = function($scope, walletService) {
                 });
             }
         });
-        $scope.setTokens();
+        //$scope.setTokens();
 	});
-    $scope.setTokens = function() {
+    /*$scope.setTokens = function() {
 		$scope.tokenObjs = [];
         $scope.tokens = Token.popTokens;
 		for (var i = 0; i < $scope.tokens.length; i++) {
@@ -41,7 +41,7 @@ var viewWalletCtrl = function($scope, walletService) {
         for (var i = 0; i < storedTokens.length; i++) {
 			$scope.tokenObjs.push(new Token(storedTokens[i].contractAddress, $scope.wallet.getAddressString(), globalFuncs.stripTags(storedTokens[i].symbol), storedTokens[i].decimal));
 		}
-	}
+	}*/
 	$scope.printQRCode = function() {
 		globalFuncs.printPaperWallets(JSON.stringify([{
 			address: $scope.wallet.getAddressString(),
