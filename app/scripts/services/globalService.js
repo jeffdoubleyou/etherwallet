@@ -35,7 +35,7 @@ var globalService = function($http, $httpParamSerializerJQLike) {
     },
     sendTransaction: {
       id: 4,
-      name: "Send Ether",
+      name: "Send Krypton",
       url: "send-transaction",
       mew: true,
       cx: true

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>MyKryptonWallet: Open Source JavaScript Client-Side Krypton Wallet</title>
-  <link rel="canonical" href="https://www.myetherwallet.com" />
+  <link rel="canonical" href="https://www.mykryptonwallet.com" />
   <meta name="description" content="Krypton Wallet: Open Source JavaScript Client-Side Krypton Wallet">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,7 @@
 @@if (site === 'mew' ) {
   <header class="container-fluid bg-gradient text-white">
     <section class="container">
-      <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="70px" width="auto" alt="My Krypton Wallet" /></a>
+      <a href="https://www.mykryptonwallet.com/"><img src="images/kryptonwallet-logo.png" height="70px" width="auto" alt="My Krypton Wallet" /></a>
       <p>Open Source JavaScript Client-Side Krypton Wallet &middot; v2.9</p>
     </section>
   </header>
