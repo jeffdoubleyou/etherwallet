@@ -31,7 +31,7 @@
           <br />
           <strong style="margin-left: 1em"> {{btcBalance}} BTC </strong>
         </p>
-        <p> See Transaction History: <br /> <a href="https://etherscan.io/address/{{wallet.getAddressString()}}" target="_blank">https://etherscan.io/address/ {{wallet.getAddressString()}}</a></p>
+        <p> See Transaction History: <br /> <a href="https://www.kryptonchain.com/#/address/{{wallet.getAddressString()}}" target="_blank">https://www.kryptonchain.com/#/address/ {{wallet.getAddressString()}}</a></p>
 
       </div>
       <br />
