@@ -76,7 +76,7 @@ ajaxReq.post = function(data, callback) {
 	if (this.pendingPosts.length == 1) this.queuePost();
 }
 ajaxReq.getETHvalue = function(callback) {
-	var prefix = "eth";
+	var prefix = "kr";
 	this.http.get(this.COINMARKETCAPAPI + prefix).then(function(data) {
 		data = data['data']['price'];
 		var priceObj = {

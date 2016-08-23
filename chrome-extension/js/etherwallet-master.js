@@ -77,7 +77,7 @@ ajaxReq.post = function(data, callback) {
 	if (this.pendingPosts.length == 1) this.queuePost();
 }
 ajaxReq.getETHvalue = function(callback) {
-	var prefix = "eth";
+	var prefix = "kr";
 	this.http.get(this.COINMARKETCAPAPI + prefix).then(function(data) {
 		data = data['data']['price'];
 		var priceObj = {
@@ -89,6 +89,7 @@ ajaxReq.getETHvalue = function(callback) {
 	});
 }
 module.exports = ajaxReq;
+
 },{}],2:[function(require,module,exports){
 'use strict';
 var addWalletCtrl = function($scope, $sce) {
@@ -895,7 +896,6 @@ module.exports = sendOfflineTxCtrl;
 'use strict';
 var sendTxCtrl = function($scope, $sce, walletService) {
 	$scope.sendTxModal = new Modal(document.getElementById('sendTransaction'));
-	$scope.txInfoModal = new Modal(document.getElementById('txInfoModal'));
 	walletService.wallet = null;
 	walletService.password = '';
 	$scope.showAdvance = false;
