@@ -32,6 +32,6 @@
 
 <header class="container-fluid bg-gradient text-white">
 <section class="container">
-  <a href="https://www.myetherwallet.com/"><img src="images/etherwallet-logo.png" height="50px" width="auto" alt="Krypton Wallet" /></a>
+  <a href="https://www.myetherwallet.com/"><img src="images/kryptonwallet-logo.png" height="50px" width="auto" alt="Krypton Wallet" /></a>
 </section>
 </header>
