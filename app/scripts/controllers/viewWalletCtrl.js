@@ -17,15 +17,10 @@ var viewWalletCtrl = function($scope, walletService) {
 			}));
             $scope.encFileName =  $scope.wallet.getV3Filename();
 		}
-        ajaxReq.getBalance($scope.wallet.getAddressString(), function(error, result){
-            if(error){
-                $scope.etherBalance = error;
+        ajaxReq.getBalance($scope.wallet.getAddressString(), function(data){
+            if(data.error){
+                $scope.etherBalance = data.msg;
             } else {
-                var data = {
-                    data: {
-                        balance: result
-                    }
-                };
                 $scope.etherBalance = etherUnits.toEther(data.data.balance,'wei');
                 ajaxReq.getETHvalue(function(data){
                     $scope.usdBalance =  etherUnits.toFiat($scope.etherBalance,'ether',data.usd);

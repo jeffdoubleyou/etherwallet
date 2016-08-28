@@ -41,13 +41,6 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 				});
 			}
 		});
-		ajaxReq.getClassicBalance($scope.wallet.getAddressString(), function(data) {
-			if (data.error) {
-				$scope.etcBalance = data.msg;
-			} else {
-				$scope.etcBalance = etherUnits.toEther(data.data.balance, 'wei');
-			}
-		});
 	}
 	$scope.$watch('tx', function(newValue, oldValue) {
 		$scope.showRaw = false;
@@ -79,7 +72,7 @@ var sendTxCtrl = function($scope, $sce, walletService) {
            return;
 	   }
 		var txData = uiFuncs.getTxData($scope);
-		var genFunc = $scope.tx.sendMode == 2 ? 'generateClassicTx' : 'generateTx';
+		var genFunc = 'generateTx';
 		if ($scope.tx.sendMode != 0) {
 			txData.to = $scope.replayContract;
 			txData.gasLimit = 300000;
@@ -100,10 +93,10 @@ var sendTxCtrl = function($scope, $sce, walletService) {
 	}
 	$scope.sendTx = function() {
 		$scope.sendTxModal.close();
-		var sendFunc = $scope.tx.sendMode == 2 ? 'sendClassicTx' : 'sendTx';
+		var sendFunc = 'sendTx';
 		uiFuncs[sendFunc]($scope.signedTx, function(resp) {
 			if (!resp.isError) {
-				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='http://etherscan.io/tx/" + resp.data + "' target='_blank'> ETH TX via EtherScan.io </a> & <a href='http://gastracker.io/tx/" + resp.data + "' target='_blank'> ETC TX via GasTracker.io</a>"));
+				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getSuccessText(globalFuncs.successMsgs[2] + "<br />" + resp.data + "<br /><a href='https://www.kryptonchain.com/#/transaction/" + resp.data + "' target='_blank'>View Transaction</a>"));
 				$scope.setBalance();
 			} else {
 				$scope.sendTxStatus = $sce.trustAsHtml(globalFuncs.getDangerText(resp.error));

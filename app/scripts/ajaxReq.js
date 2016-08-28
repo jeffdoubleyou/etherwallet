@@ -17,44 +17,89 @@ var web3 = new Web3();
 web3.setProvider(new Web3.providers.HttpProvider(ajaxReq.SERVERURL));
 
 ajaxReq.getBalance = function(addr, callback) {
-    web3.eth.getBalance(addr, callback);
+    web3.eth.getBalance(addr, function(error, result) {
+        var data = {
+            error: error,
+            msg: error,
+            data: {
+                balance: result
+            } 
+        };
+        return callback(data);
+    });
 }
-ajaxReq.getClassicBalance = function(addr, callback) {
-	this.post({
-		balance: addr,
-        isClassic: true
-	}, callback);
-}
+
 ajaxReq.getTransactionData = function(addr, callback) {
-	this.post({
-		txdata: addr,
-        isClassic: false
-	}, callback);
+    var data = {
+        address: addr
+    };
+    web3.eth.getBalance(addr, "pending", function(error, result) {
+        if(error) {
+            data.error = error;
+            data.msg = error;
+            return callback(data);
+        }
+        else {
+            data.balance = result.toNumber();
+            web3.eth.getTransactionCount(addr, "pending", function(error, result) {
+                if(error) {
+                    data.error = error;
+                    data.msg = error;
+                    return callback(data);
+                }
+                else {
+                    data.nonce = web3.toHex(result);
+                    web3.eth.getGasPrice(function(error, result) {
+                        if(error) {
+                            data.error = error;
+                            data.msg = error;
+                            return callback(data);
+                        }
+                        else {
+                            data.gasprice = web3.toHex(result.toNumber());
+                            data.data = data; // whatever
+                            return callback(data);
+                        }
+                    });
+                }
+            });
+        }
+    });
 }
-ajaxReq.getClassicTransactionData = function(addr, callback) {
-	this.post({
-		txdata: addr,
-        isClassic: true
-	}, callback);
+
+ajaxReq.getTransaction = function(addr, callback) {
+    web3.eth.getTransaction(addr, function(error, result) {
+        var data = {
+            error: error,
+            msg: error,
+            data: result
+        };
+        console.log(result);
+        return callback(data);
+    });
 }
 ajaxReq.sendRawTx = function(rawTx, callback) {
-	this.post({
-		rawtx: rawTx,
-        isClassic: false
-	}, callback);
-}
-ajaxReq.sendClassicRawTx = function(rawTx, callback) {
-	this.post({
-		rawtx: rawTx,
-        isClassic: true
-	}, callback);
+    console.log(rawTx);
+    web3.eth.sendRawTransaction(rawTx, function(error, result) {
+        var data = {
+            error: error,
+            msg: error,
+            data: result
+        };
+        return callback(data);
+    });
 }
 ajaxReq.getEstimatedGas = function(txobj, callback) {
-	this.post({
-		estimatedGas: txobj,
-        isClassic: false
-	}, callback);
+    web3.eth.estimateGas(txobj, function(error, result) {
+        var data = {
+            error: error,
+            msg: error,
+            data: result
+        }
+    });
+    return callback(data);
 }
+
 ajaxReq.getEthCall = function(txobj, callback) {
 	this.post({
 		ethCall: txobj,
